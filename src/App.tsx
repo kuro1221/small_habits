@@ -1,10 +1,34 @@
 import React from "react";
 import AppBar from "./layouts/AppBar";
+import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 
 function App() {
   return (
-    <div>
+    <div className="">
       <AppBar />
+      <div className="flex justify-center">
+        <div className="justify-center mt-8 w-3/5">
+          <TextField
+            id="standard-textarea"
+            label="あなたの目標"
+            placeholder="目標を入力してください"
+            multiline
+            variant="standard"
+            className="w-full"
+          />
+          <div className="flex justify-between mt-8">
+            <TextField
+              id="standard-required"
+              label="小さな習慣"
+              placeholder="目標を達成するための小さな習慣を入力してください"
+              variant="standard"
+              className="w-4/5"
+            />
+            <Button variant="contained">完了</Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

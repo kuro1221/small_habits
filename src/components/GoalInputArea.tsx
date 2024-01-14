@@ -36,7 +36,7 @@ export const GoalInputArea: React.FC<Props> = ({ onChangeGoal, goal }) => {
     <div className="justify-center">
       <div className="flex justify-between">
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          {`目標：${changedGoal}`}
+          {`目標：${goal}`}
         </Typography>
         <IconButton aria-label="delete" size="small" onClick={handleOpen}>
           <EditIcon />

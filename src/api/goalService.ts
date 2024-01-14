@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 
 // PostでchangeGoalAPIを実行する関数
-export const changeGoal = async (goal: string) => {
+export const changeGoalAPI = async (goal: string) => {
   //   try {
   //     const url = "http://localhost:8080/goal";
   //     const options = {
@@ -30,6 +30,6 @@ export const changeGoal = async (goal: string) => {
   return { status: 200 };
 };
 
-export const fetchGoal = (): Promise<string> => {
+export const fetchGoalAPI = (): Promise<string> => {
   return Promise.resolve("TOEIC600点");
 };

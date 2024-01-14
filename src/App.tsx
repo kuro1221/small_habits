@@ -3,7 +3,6 @@ import AppBar from "./layouts/AppBar";
 import TextField from "@mui/material/TextField";
 import { GoalInputArea } from "./components/GoalInputArea";
 import { Button } from "@mui/material";
-import { changeGoal, fetchGoal } from "./api/goalService";
 import useGoal from "./hooks/useGoal";
 
 function App() {
@@ -16,7 +15,8 @@ function App() {
         <div className="justify-center mt-8 w-3/5">
           <GoalInputArea
             goal={goal.goal}
-            onChangeGoal={(changedGoal: string) => changeGoal(changedGoal)}
+            error={goal.error}
+            onChangeGoal={(changedGoal: string) => goal.changeGoal(changedGoal)}
           />
           <div className="flex justify-between mt-8">
             <TextField

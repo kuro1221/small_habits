@@ -10,9 +10,14 @@ import { Button } from "@mui/material";
 type Props = {
   onChangeGoal: (goal: string) => void;
   goal: string;
+  error: string;
 };
 
-export const GoalInputArea: React.FC<Props> = ({ onChangeGoal, goal }) => {
+export const GoalInputArea: React.FC<Props> = ({
+  onChangeGoal,
+  goal,
+  error,
+}) => {
   const [changedGoal, setChangedGoal] = React.useState(goal);
 
   // モーダル
@@ -54,6 +59,8 @@ export const GoalInputArea: React.FC<Props> = ({ onChangeGoal, goal }) => {
               id="standard-textarea"
               label="あなたの目標"
               placeholder="目標を入力してください"
+              error={error ? true : false}
+              helperText={error}
               multiline
               variant="standard"
               className="w-full"

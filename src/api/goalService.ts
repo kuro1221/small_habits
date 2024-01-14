@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 
-// PostでchangeGoalAPIを実行する関数
-export const changeGoalAPI = async (goal: string) => {
+// PostでeditGoalAPIを実行する関数
+export const editGoalAPI = async (goal: string) => {
   //   try {
   //     const url = "http://localhost:8080/goal";
   //     const options = {

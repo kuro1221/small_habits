@@ -6,19 +6,12 @@ import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
+import useGoal from "../hooks/useGoal";
 
-type Props = {
-  onChangeGoal: (goal: string) => void;
-  goal: string;
-  error: string;
-};
+export const GoalInputArea: React.FC = () => {
+  const goal = useGoal();
 
-export const GoalInputArea: React.FC<Props> = ({
-  onChangeGoal,
-  goal,
-  error,
-}) => {
-  const [changedGoal, setChangedGoal] = React.useState(goal);
+  const [changedGoal, setChangedGoal] = React.useState(goal.goal);
 
   // モーダル
   const [open, setOpen] = React.useState(false);
@@ -41,7 +34,7 @@ export const GoalInputArea: React.FC<Props> = ({
     <div className="justify-center">
       <div className="flex justify-between">
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          {`目標：${goal}`}
+          {`目標：${goal.goal}`}
         </Typography>
         <IconButton aria-label="delete" size="small" onClick={handleOpen}>
           <EditIcon />
@@ -59,8 +52,8 @@ export const GoalInputArea: React.FC<Props> = ({
               id="standard-textarea"
               label="あなたの目標"
               placeholder="目標を入力してください"
-              error={error ? true : false}
-              helperText={error}
+              error={goal.error ? true : false}
+              helperText={goal.error}
               multiline
               variant="standard"
               className="w-full"
@@ -69,7 +62,7 @@ export const GoalInputArea: React.FC<Props> = ({
                 setChangedGoal(e.target.value);
               }}
             />
-            <Button onClick={() => onChangeGoal(changedGoal)}>変更</Button>
+            <Button onClick={() => goal.editGoal(changedGoal)}>編集</Button>
           </Box>
         </Modal>
       </div>

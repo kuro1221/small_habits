@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { fetchGoalAPI } from "../api/goalService";
-import { changeGoalAPI } from "../api/goalService";
+import { editGoalAPI } from "../api/goalService";
 
 const useGoal = () => {
   const [goal, setGoal] = useState<string>("");
@@ -13,18 +13,20 @@ const useGoal = () => {
     });
   }, []);
 
-  const changeGoal = async (newGoal: string) => {
+  async function editGoal(newGoal: string) {
     try {
-      if (newGoal === "") setError("目標を入力してください");
-      await changeGoalAPI(newGoal);
+      if (newGoal === "") return setError("目標を入力してください");
+      if (newGoal.length > 40)
+        return setError("目標は40文字以内で入力してください");
+      await editGoalAPI(newGoal);
       setGoal(newGoal);
       setError("");
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
-  return { goal, error, changeGoal };
+  return { goal, error, editGoal };
 };
 
 export default useGoal;

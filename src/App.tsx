@@ -3,21 +3,14 @@ import AppBar from "./layouts/AppBar";
 import TextField from "@mui/material/TextField";
 import { GoalInputArea } from "./components/GoalInputArea";
 import { Button } from "@mui/material";
-import useGoal from "./hooks/useGoal";
 
 function App() {
-  const goal = useGoal();
-
   return (
     <div className="">
       <AppBar />
       <div className="flex justify-center">
         <div className="justify-center mt-8 w-3/5">
-          <GoalInputArea
-            goal={goal.goal}
-            error={goal.error}
-            onChangeGoal={(changedGoal: string) => goal.changeGoal(changedGoal)}
-          />
+          <GoalInputArea />
           <div className="flex justify-between mt-8">
             <TextField
               id="standard-required"

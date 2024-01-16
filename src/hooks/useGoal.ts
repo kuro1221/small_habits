@@ -5,6 +5,7 @@ import { editGoalAPI } from "../api/goalService";
 const useGoal = () => {
   const [goal, setGoal] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [changedGoal, setChangedGoal] = useState(goal);
 
   useEffect(() => {
     fetchGoalAPI().then((fetchedGoal: string) => {
@@ -25,6 +26,10 @@ const useGoal = () => {
       console.log(error);
     }
   }
+
+  const onChangeGoal = (e: HTMLInputElement) => {
+    setChangedGoal(e.value);
+  };
 
   return { goal, error, editGoal };
 };
